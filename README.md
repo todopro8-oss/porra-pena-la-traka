@@ -11,9 +11,12 @@ La porra del Mundial 2026 para la Peña La Traka. Web estática, sin servidor: p
 
 El PDF incluye un código compacto (`CODIGO: nombre|1X2...`) con los 72 pronósticos en orden, para facilitar el análisis automático de las porras.
 
-## Próximamente
+## Resultados
 
-- 🏆 Pestaña **Resultados**: clasificación en directo, puntos por acierto y gráficos según avance el Mundial.
+La pestaña **Resultados** muestra la clasificación de la peña (1 punto por acierto), un gráfico de evolución punto a punto y el detalle de cada partido jugado con los aciertos de cada porrero.
+
+- Las porras de los participantes están en `porras.js` (`PORRAS`, extraídas de los PDF con `tools/extract_codes.py`).
+- Los resultados oficiales se actualizan a mano en `porras.js` (`RESULTS`): id del partido → `{ r: "1"|"X"|"2", score: "2-0" }`.
 
 ## Desarrollo
 

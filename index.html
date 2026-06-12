@@ -44,19 +44,7 @@
 
     <!-- ============ PESTAÑA: RESULTADOS ============ -->
     <section id="tab-resultados" class="tab-panel">
-      <div class="coming-soon">
-        <div class="coming-emoji">🚧🏆🚧</div>
-        <h2>Muy pronto…</h2>
-        <p>Cuando todos hayáis enviado vuestra porra, aquí aparecerá la <strong>clasificación en directo</strong>: puntos por acierto, gráficos chulos y el ranking de la peña actualizado partido a partido.</p>
-        <div class="mock-chart" aria-hidden="true">
-          <div class="bar" style="--h: 85%"><span>🥇</span></div>
-          <div class="bar" style="--h: 65%"><span>🥈</span></div>
-          <div class="bar" style="--h: 50%"><span>🥉</span></div>
-          <div class="bar" style="--h: 35%"><span>😅</span></div>
-          <div class="bar" style="--h: 20%"><span>🪦</span></div>
-        </div>
-        <p class="small">¿Quién será la traca y quién el petardo mojado? 💧</p>
-      </div>
+      <div id="results-root" class="results-wrap"></div>
     </section>
   </main>
 
@@ -66,7 +54,10 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <script src="data.js"></script>
+  <script src="porras.js"></script>
   <script src="app.js"></script>
+  <script src="results.js"></script>
 </body>
 </html>
