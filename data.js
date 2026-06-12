@@ -136,3 +136,11 @@ const GROUPS = [
 ];
 
 const TOTAL_MATCHES = GROUPS.reduce((n, g) => n + g.matches.length, 0);
+
+// Lista plana de partidos con id global estable (1..72)
+const MATCHES = [];
+GROUPS.forEach((g) => {
+  g.matches.forEach((m) => {
+    MATCHES.push({ id: MATCHES.length + 1, group: g.letter, ...m });
+  });
+});

@@ -107,8 +107,6 @@ function renderResults() {
   root.innerHTML = stats + ranking + chart + details;
 }
 
-// El gráfico se crea al abrir la pestaña por primera vez:
-// crearlo con el panel oculto (display:none) deja el canvas a tamaño 0.
 let evoChart = null;
 function buildChart() {
   const canvas = document.getElementById("evo-chart");
@@ -143,5 +141,15 @@ function buildChart() {
   });
 }
 
+// Cambio de pestaña
+document.querySelectorAll(".tab").forEach((tab) => {
+  tab.addEventListener("click", () => {
+    document.querySelectorAll(".tab").forEach((t) => t.classList.remove("active"));
+    document.querySelectorAll(".tab-panel").forEach((p) => p.classList.remove("active"));
+    tab.classList.add("active");
+    document.getElementById(`tab-${tab.dataset.tab}`).classList.add("active");
+  });
+});
+
 renderResults();
-document.querySelector('.tab[data-tab="resultados"]').addEventListener("click", () => setTimeout(buildChart, 0));
+buildChart();

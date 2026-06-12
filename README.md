@@ -1,23 +1,15 @@
 # 🧨 Porra Peña La Traka · Mundial 2026
 
-La porra del Mundial 2026 para la Peña La Traka. Web estática, sin servidor: pronostica los 72 partidos de la fase de grupos con 1-X-2, pon tu nombre y exporta tu porra en PDF.
+La porra del Mundial 2026 de la Peña La Traka. Web estática, sin servidor. Las porras ya están cerradas (72 pronósticos 1-X-2 de la fase de grupos por jugador); ahora la web muestra:
 
-## Cómo funciona
+- **🏆 Resultados**: clasificación de la peña (1 punto por acierto), gráfico de evolución punto a punto y detalle de cada partido jugado con los aciertos de cada porrero.
+- **🔬 Análisis**: matriz de sinergias (en cuántos pronósticos coincide cada pareja), perfil porrero (reparto de 1/X/2, el más localista/empatador/visitante) y los partidos más polémicos de la peña.
 
-1. Abre la web y pon tu nombre.
-2. Marca **1**, **X** o **2** en cada uno de los 72 partidos (se guarda solo en tu dispositivo).
-3. Si te aburres, el botón 🎲 rellena al azar lo que te falte.
-4. Cuando esté todo, pulsa **📄 Exportar PDF** y envía el archivo al organizador.
+## Datos
 
-El PDF incluye un código compacto (`CODIGO: nombre|1X2...`) con los 72 pronósticos en orden, para facilitar el análisis automático de las porras.
-
-## Resultados
-
-La pestaña **Resultados** muestra la clasificación de la peña (1 punto por acierto), un gráfico de evolución punto a punto y el detalle de cada partido jugado con los aciertos de cada porrero.
-
-- Las porras de los participantes están en `porras.js` (`PORRAS`, extraídas de los PDF con `tools/extract_codes.py`).
-- Los resultados oficiales se actualizan a mano en `porras.js` (`RESULTS`): id del partido → `{ r: "1"|"X"|"2", score: "2-0" }`.
+- Las porras de los participantes están en `porras.js` (`PORRAS`), extraídas de los PDF que exportó cada jugador con `tools/extract_codes.py` (línea `CODIGO: nombre|72×[1X2]`).
+- Los resultados oficiales se actualizan a mano en `porras.js` (`RESULTS`): id del partido (1–72, orden de `data.js`) → `{ r: "1"|"X"|"2", score: "2-0" }`.
 
 ## Desarrollo
 
-Sin dependencias ni build: HTML + CSS + JS planos. Basta con abrir `index.html` o servir la carpeta con cualquier servidor estático.
+Sin dependencias ni build: HTML + CSS + JS planos (Chart.js por CDN). Basta con abrir `index.html` o servir la carpeta con cualquier servidor estático.
