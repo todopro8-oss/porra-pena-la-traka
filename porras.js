@@ -15,4 +15,6 @@ const PORRAS = [
 const RESULTS = {
   1: { r: "1", score: "2-0" }, // 11 jun · México 2-0 Sudáfrica
   2: { r: "1", score: "2-1" }, // 11 jun · Corea del Sur 2-1 Chequia
+  7: { r: "X", score: "1-1" }, // 12 jun · Canadá 1-1 Bosnia
+  19: { r: "1", score: "4-1" }, // 12 jun · Estados Unidos 4-1 Paraguay
 };
