@@ -25,4 +25,8 @@ const RESULTS = {
   26: { r: "1", score: "1-0" }, // 14 jun · Costa de Marfil 1-0 Ecuador
   31: { r: "X", score: "2-2" }, // 14 jun · Países Bajos 2-2 Japón
   32: { r: "1", score: "5-1" }, // 14 jun · Suecia 5-1 Túnez
+  37: { r: "X", score: "1-1" }, // 15 jun · Bélgica 1-1 Egipto
+  38: { r: "X", score: "2-2" }, // 15 jun · Irán 2-2 Nueva Zelanda
+  43: { r: "X", score: "0-0" }, // 15 jun · España 0-0 Cabo Verde
+  44: { r: "X", score: "1-1" }, // 15 jun · Arabia Saudí 1-1 Uruguay
 };
