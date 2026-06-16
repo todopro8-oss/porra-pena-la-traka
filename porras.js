@@ -20,4 +20,9 @@ const RESULTS = {
   13: { r: "X", score: "1-1" }, // 13 jun · Brasil 1-1 Marruecos
   14: { r: "2", score: "0-1" }, // 13 jun · Haití 0-1 Escocia
   19: { r: "1", score: "4-1" }, // 12 jun · Estados Unidos 4-1 Paraguay
+  20: { r: "1", score: "2-0" }, // 13 jun · Australia 2-0 Turquía
+  25: { r: "1", score: "7-1" }, // 14 jun · Alemania 7-1 Curazao
+  26: { r: "1", score: "1-0" }, // 14 jun · Costa de Marfil 1-0 Ecuador
+  31: { r: "X", score: "2-2" }, // 14 jun · Países Bajos 2-2 Japón
+  32: { r: "1", score: "5-1" }, // 14 jun · Suecia 5-1 Túnez
 };
