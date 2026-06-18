@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Porra de la Porra · ¿Quién ganará la Peña La Traka?</title>
+  <meta name="description" content="La porra de la porra: apuesta por quién crees que ganará la Peña La Traka del Mundial 2026." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🔮</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg2: #11182e;
+      --card: #161f3a;
+      --card-edge: #243153;
+      --text: #eef2ff;
+      --muted: #93a0c4;
+      --accent: #ff5e3a;
+      --accent2: #ffb938;
+      --grad: linear-gradient(135deg, #ff5e3a 0%, #ffb938 100%);
+      --green: #34d399;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Outfit", system-ui, sans-serif;
+      background:
+        radial-gradient(900px 400px at 80% -100px, rgba(255, 94, 58, 0.18), transparent),
+        radial-gradient(700px 350px at 10% -50px, rgba(255, 185, 56, 0.12), transparent),
+        var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ---------- Hero ---------- */
+    .hero { text-align: center; padding: 48px 16px 0; }
+    .back-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--muted); text-decoration: none; font-weight: 600;
+      font-size: 0.9rem; margin-bottom: 22px; transition: color 0.2s;
+    }
+    .back-link:hover { color: var(--text); }
+    .hero-title {
+      font-size: clamp(2.1rem, 6.5vw, 3.6rem);
+      font-weight: 900; letter-spacing: -0.02em; line-height: 1.05;
+    }
+    .hero-title span {
+      background: var(--grad);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .hero-sub { color: var(--muted); margin-top: 12px; font-size: 1.08rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+
+    main { max-width: 920px; margin: 0 auto; padding: 30px 16px 70px; }
+
+    /* ---------- Pasos ---------- */
+    .step-label {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-weight: 800; font-size: 0.82rem; letter-spacing: 0.06em;
+      text-transform: uppercase; color: var(--muted); margin: 34px 0 16px;
+    }
+    .step-num {
+      width: 26px; height: 26px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 0.85rem;
+      background: var(--grad); color: #1a1206; font-weight: 900;
+    }
+
+    /* ---------- Candidatos ---------- */
+    .candidates { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 14px; }
+    .cand {
+      position: relative; text-align: left;
+      background: var(--card); border: 1.5px solid var(--card-edge);
+      border-radius: 18px; padding: 18px; cursor: pointer;
+      font-family: inherit; color: var(--text);
+      transition: transform 0.18s, border-color 0.18s, box-shadow 0.18s;
+      display: flex; flex-direction: column; gap: 12px;
+    }
+    .cand:hover { transform: translateY(-3px); border-color: var(--accent2); }
+    .cand.selected {
+      border-color: transparent;
+      box-shadow: 0 0 0 2px var(--accent2), 0 14px 30px -12px rgba(255, 94, 58, 0.6);
+    }
+    .cand-top { display: flex; align-items: center; gap: 12px; }
+    .avatar {
+      width: 46px; height: 46px; border-radius: 14px; flex-shrink: 0;
+      display: grid; place-items: center; font-weight: 900; font-size: 1.2rem; color: #0b1020;
+    }
+    .cand-name { font-weight: 800; font-size: 1.05rem; line-height: 1.1; }
+    .cand-pos { color: var(--muted); font-size: 0.82rem; font-weight: 600; margin-top: 2px; }
+    .cand-meta { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+    .cand-pts { font-weight: 800; font-variant-numeric: tabular-nums; font-size: 0.92rem; }
+    .cand-pts small { color: var(--muted); font-weight: 600; }
+    .fav-badge {
+      font-size: 0.68rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;
+      padding: 3px 9px; border-radius: 999px; background: rgba(255, 185, 56, 0.16); color: var(--accent2);
+    }
+    .check {
+      position: absolute; top: 14px; right: 14px;
+      width: 24px; height: 24px; border-radius: 50%;
+      background: var(--grad); color: #1a1206; display: none;
+      place-items: center; font-weight: 900; font-size: 0.85rem;
+    }
+    .cand.selected .check { display: grid; }
+
+    /* ---------- Apuesta / formulario ---------- */
+    .bet-panel {
+      background: var(--card); border: 1px solid var(--card-edge);
+      border-radius: 20px; padding: 22px;
+    }
+    .bet-line { font-size: 1.05rem; line-height: 1.5; margin-bottom: 18px; }
+    .bet-line strong { color: var(--accent2); }
+    .field-label { display: block; font-size: 0.85rem; font-weight: 700; color: var(--muted); margin-bottom: 8px; }
+    .name-input {
+      width: 100%; font-family: inherit; font-size: 1rem; color: var(--text);
+      background: var(--bg); border: 1.5px solid var(--card-edge);
+      border-radius: 12px; padding: 13px 15px; transition: border-color 0.2s;
+    }
+    .name-input:focus { outline: none; border-color: var(--accent2); }
+    .name-input::placeholder { color: #5b678a; }
+
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+    .btn {
+      font-family: inherit; font-weight: 800; font-size: 0.98rem;
+      border-radius: 999px; padding: 13px 24px; cursor: pointer;
+      border: 1px solid var(--card-edge); transition: transform 0.15s, opacity 0.2s;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn:active { transform: scale(0.97); }
+    .btn-wa { background: #25d366; color: #06351b; border-color: transparent; }
+    .btn-copy { background: var(--bg2); color: var(--text); }
+    .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+    .saved-note {
+      margin-top: 16px; font-size: 0.9rem; color: var(--green); font-weight: 700;
+      display: none; align-items: center; gap: 7px;
+    }
+    .saved-note.show { display: flex; }
+
+    .empty-hint { color: var(--muted); text-align: center; padding: 8px 0; font-size: 0.95rem; }
+
+    .footer { text-align: center; color: var(--muted); font-size: 0.85rem; padding: 10px 0 36px; }
+
+    @media (max-width: 480px) {
+      .bet-panel { padding: 18px 16px; }
+      .actions .btn { flex: 1; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <a class="back-link" href="index.html">← Volver a la porra</a>
+    <h1 class="hero-title">🔮 La Porra de la <span>Porra</span></h1>
+    <p class="hero-sub">Da igual quién acierte los partidos… lo importante es <strong>¿quién crees tú que ganará la Peña La Traka?</strong> Pon tu nombre, elige al campeón y manda tu apuesta.</p>
+  </header>
+
+  <main>
+    <div class="step-label"><span class="step-num">1</span> Elige a tu favorito</div>
+    <div id="candidates" class="candidates"></div>
+
+    <div class="step-label"><span class="step-num">2</span> Confirma tu apuesta</div>
+    <div class="bet-panel">
+      <div id="bet-line" class="bet-line empty-hint">Selecciona arriba a quién crees que va a ganar 👆</div>
+
+      <div id="bet-form" style="display:none">
+        <label class="field-label" for="bettor">Tu nombre</label>
+        <input id="bettor" class="name-input" type="text" placeholder="¿Cómo te llamas?" autocomplete="name" maxlength="24" />
+
+        <div class="actions">
+          <button id="btn-wa" class="btn btn-wa" disabled>📲 Enviar por WhatsApp</button>
+          <button id="btn-copy" class="btn btn-copy" disabled>📋 Copiar apuesta</button>
+        </div>
+        <div id="saved-note" class="saved-note">✓ Apuesta guardada en este dispositivo</div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">Hecho con 🔮 para la Peña La Traka · Mundial 2026</footer>
+
+  <script src="data.js"></script>
+  <script src="porras.js"></script>
+  <script>
+    // ---- Paleta y avatares ----
+    const PALETTE = ["#ff5e3a", "#ffb938", "#34d399", "#60a5fa", "#c084fc", "#f472b6", "#2dd4bf"];
+
+    // ---- Clasificación real (reutiliza data.js + porras.js) ----
+    function computeStandings() {
+      const played = (typeof MATCHES !== "undefined" ? MATCHES : []).filter((m) => RESULTS[m.id]);
+      return PORRAS.map((p, i) => {
+        let pts = 0;
+        played.forEach((m) => { if (p.code[m.id - 1] === RESULTS[m.id].r) pts++; });
+        return { name: p.name, pts, played: played.length, color: PALETTE[i % PALETTE.length] };
+      }).sort((a, b) => b.pts - a.pts || a.name.localeCompare(b.name, "es"));
+    }
+
+    function withRanks(standings) {
+      let lastPts = null, lastRank = 0;
+      return standings.map((s, i) => {
+        const rank = s.pts === lastPts ? lastRank : i + 1;
+        lastPts = s.pts; lastRank = rank;
+        return { ...s, rank };
+      });
+    }
+    const ordinal = (r) => r === 1 ? "🥇 1º" : r === 2 ? "🥈 2º" : r === 3 ? "🥉 3º" : `${r}º`;
+    const initials = (name) => name.trim().split(/\s+/).map((w) => w[0]).slice(0, 2).join("").toUpperCase();
+
+    const standings = withRanks(computeStandings());
+    const hasResults = standings[0] && standings[0].played > 0;
+
+    // ---- Estado ----
+    let selected = null;
+    const SHARE_URL = "https://todopro8-oss.github.io/porra-pena-la-traka/porra-de-la-porra.html";
+
+    // ---- Render candidatos ----
+    const grid = document.getElementById("candidates");
+    grid.innerHTML = standings.map((s) => `
+      <button class="cand" data-name="${s.name}">
+        <span class="check">✓</span>
+        <div class="cand-top">
+          <span class="avatar" style="background:${s.color}">${initials(s.name)}</span>
+          <div>
+            <div class="cand-name">${s.name}</div>
+            <div class="cand-pos">${hasResults ? ordinal(s.rank) + " en la porra" : "Aún sin jugar"}</div>
+          </div>
+        </div>
+        <div class="cand-meta">
+          <span class="cand-pts">${hasResults ? `${s.pts} pt${s.pts === 1 ? "" : "s"}` : "—"} <small>${hasResults ? `· ${s.played} jugados` : ""}</small></span>
+          ${hasResults && s.rank === 1 ? '<span class="fav-badge">⭐ Favorito</span>' : ""}
+        </div>
+      </button>`).join("");
+
+    // ---- Selección ----
+    const betLine = document.getElementById("bet-line");
+    const betForm = document.getElementById("bet-form");
+    const bettorInput = document.getElementById("bettor");
+    const btnWa = document.getElementById("btn-wa");
+    const btnCopy = document.getElementById("btn-copy");
+    const savedNote = document.getElementById("saved-note");
+
+    grid.querySelectorAll(".cand").forEach((card) => {
+      card.addEventListener("click", () => {
+        grid.querySelectorAll(".cand").forEach((c) => c.classList.remove("selected"));
+        card.classList.add("selected");
+        selected = card.dataset.name;
+        betLine.classList.remove("empty-hint");
+        betLine.innerHTML = `Apuestas a que <strong>${selected}</strong> ganará la Peña La Traka. 🏆`;
+        betForm.style.display = "block";
+        updateButtons();
+        savedNote.classList.remove("show");
+      });
+    });
+
+    function buildMessage() {
+      const who = bettorInput.value.trim() || "Alguien";
+      return `🔮 PORRA DE LA PORRA\n${who} apuesta a que *${selected}* ganará la Peña La Traka 🏆\n\n¿Y tú quién crees que gana? 👉 ${SHARE_URL}`;
+    }
+
+    function updateButtons() {
+      const ready = !!selected && bettorInput.value.trim().length > 0;
+      btnWa.disabled = !ready;
+      btnCopy.disabled = !ready;
+    }
+
+    function saveLocal() {
+      try {
+        localStorage.setItem("porra-de-la-porra", JSON.stringify({ bettor: bettorInput.value.trim(), pick: selected, ts: Date.now() }));
+        savedNote.classList.add("show");
+      } catch (e) {}
+    }
+
+    bettorInput.addEventListener("input", updateButtons);
+
+    btnWa.addEventListener("click", () => {
+      if (btnWa.disabled) return;
+      saveLocal();
+      window.open("https://wa.me/?text=" + encodeURIComponent(buildMessage()), "_blank");
+    });
+
+    btnCopy.addEventListener("click", async () => {
+      if (btnCopy.disabled) return;
+      saveLocal();
+      try {
+        await navigator.clipboard.writeText(buildMessage());
+        btnCopy.textContent = "✓ Copiado";
+        setTimeout(() => (btnCopy.textContent = "📋 Copiar apuesta"), 1800);
+      } catch (e) {
+        btnCopy.textContent = "Cópialo manualmente";
+      }
+    });
+
+    // ---- Restaurar apuesta previa ----
+    try {
+      const prev = JSON.parse(localStorage.getItem("porra-de-la-porra") || "null");
+      if (prev && prev.pick) {
+        const card = grid.querySelector(`.cand[data-name="${CSS.escape(prev.pick)}"]`);
+        if (card) {
+          if (prev.bettor) bettorInput.value = prev.bettor;
+          card.click();
+          savedNote.classList.add("show");
+        }
+      }
+    } catch (e) {}
+  </script>
+</body>
+</html>
