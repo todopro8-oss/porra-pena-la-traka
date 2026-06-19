@@ -15,8 +15,12 @@ const PORRAS = [
 const RESULTS = {
   1: { r: "1", score: "2-0" }, // 11 jun · México 2-0 Sudáfrica
   2: { r: "1", score: "2-1" }, // 11 jun · Corea del Sur 2-1 Chequia
+  3: { r: "X", score: "1-1" }, // 18 jun · Chequia 1-1 Sudáfrica
+  4: { r: "1", score: "1-0" }, // 18 jun · México 1-0 Corea del Sur
   7: { r: "X", score: "1-1" }, // 12 jun · Canadá 1-1 Bosnia
   8: { r: "X", score: "1-1" }, // 13 jun · Catar 1-1 Suiza
+  9: { r: "1", score: "4-1" }, // 18 jun · Suiza 4-1 Bosnia
+  10: { r: "1", score: "6-0" }, // 18 jun · Canadá 6-0 Catar
   13: { r: "X", score: "1-1" }, // 13 jun · Brasil 1-1 Marruecos
   14: { r: "2", score: "0-1" }, // 13 jun · Haití 0-1 Escocia
   19: { r: "1", score: "4-1" }, // 12 jun · Estados Unidos 4-1 Paraguay
