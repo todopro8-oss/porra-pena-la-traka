@@ -39,13 +39,17 @@ const RESULTS = {
   34: { r: "2", score: "0-4" }, // 20 jun · Túnez 0-4 Japón
   37: { r: "X", score: "1-1" }, // 15 jun · Bélgica 1-1 Egipto
   38: { r: "X", score: "2-2" }, // 15 jun · Irán 2-2 Nueva Zelanda
+  39: { r: "X", score: "0-0" }, // 21 jun · Bélgica 0-0 Irán
+  40: { r: "2", score: "1-3" }, // 21 jun · Nueva Zelanda 1-3 Egipto
   43: { r: "X", score: "0-0" }, // 15 jun · España 0-0 Cabo Verde
   44: { r: "X", score: "1-1" }, // 15 jun · Arabia Saudí 1-1 Uruguay
   45: { r: "1", score: "4-0" }, // 21 jun · España 4-0 Arabia Saudí
+  46: { r: "X", score: "2-2" }, // 21 jun · Uruguay 2-2 Cabo Verde
   49: { r: "1", score: "3-1" }, // 16 jun · Francia 3-1 Senegal
   50: { r: "2", score: "1-4" }, // 16 jun · Irak 1-4 Noruega
   55: { r: "1", score: "3-0" }, // 16 jun · Argentina 3-0 Argelia
   56: { r: "1", score: "3-1" }, // 16 jun · Austria 3-1 Jordania
+  57: { r: "1", score: "2-0" }, // 22 jun · Argentina 2-0 Austria
   61: { r: "X", score: "1-1" }, // 17 jun · Portugal 1-1 RD Congo
   62: { r: "2", score: "1-3" }, // 17 jun · Uzbekistán 1-3 Colombia
   67: { r: "1", score: "4-2" }, // 17 jun · Inglaterra 4-2 Croacia
